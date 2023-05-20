@@ -14,16 +14,20 @@ function App() {
   };
 
   const fetchWeather = async (location) => {
-    const response = await axios.get(
-      `http://api.weatherstack.com/current?access_key=f924979c8a4e683fbaa89a78a5f6b0a6&query=${location}`
-    );
-    console.log(location);
-    console.log(response.data);
-    console.log(response.data.current);
-    console.log(response.data.current.temperature);
-    console.log(response.data.current.humidity);
-    setTemperature(response.data.current.temperature);
-    setHumidity(response.data.current.humidity);
+    try {
+      const response = await axios.get("https://example.com/api");
+      // Process the response
+      console.log(location);
+      console.log(response.data);
+      console.log(response.data.current);
+      console.log(response.data.current.temperature);
+      console.log(response.data.current.humidity);
+      setTemperature(response.data.current.temperature);
+      setHumidity(response.data.current.humidity);
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+
     // setTemperature(33);
     // setHumidity(45);
     setShow(true);
